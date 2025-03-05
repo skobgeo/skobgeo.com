@@ -1,0 +1,47 @@
+---
+import '../styles/normalize.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Georgii Skobelev - Frontend Developer" />
+    <title>Georgii Skobelev | Frontend Developer</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  :root {
+    --primary-color: #0070f3;
+		--primary-color-rgb: rgb(0, 112, 243);
+    --text-color: #2d3748;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --hover-color: #0051b3;
+  }
+
+  body {
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+  }
+</style>

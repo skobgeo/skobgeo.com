@@ -1,0 +1,150 @@
+---
+import profileImage from "../assets/profile.webp";
+import { Image } from "astro:assets";
+import Link from "./Link.astro";
+
+const links = [
+  {
+    name: "gskobelev@pm.me",
+    url: "mailto:gskobelev@pm.me",
+  },
+  {
+    name: "Telegram",
+    url: "https://t.me/skobgeo",
+  },
+  {
+    name: "GitHub",
+    url: "https://github.com/skogeo",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/georgii-skobelev-a24109182/",
+  },
+  {
+    name: "X (Twitter)",
+    url: "https://x.com/skobgeo",
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/skobgeo/",
+  },
+] as const;
+---
+
+<section class="profile-section">
+  <Image
+    src={profileImage}
+    loading="eager"
+    alt="Georgii Skobelev"
+    class="profile-img"
+  />
+  <div class="profile-content">
+    <h1>Georgii Skobelev</h1>
+    <div class="subtitle">Frontend Developer / Dog lover</div>
+    <p>
+      Hi! I'm a front-end developer based in Tbilisi, Georgia. I love building
+      beautiful and accessible websites. Feel free to reach out to me.<br />
+
+      In my free time, I enjoy playing with my dog, reading books, watching anime, playing computer games and exploring new places. I'm also a big fan of coffee and good music.<br />
+
+      I want to make the web a better place for everyone. Let's build something
+      great together.<br />
+
+      This website will evolve over time, so check back soon for updates.<br />
+      I'm planning to make it my digital garden.
+    </p>
+    <ul class="contact-list">
+      {
+        links.map((link) => (
+          <li>
+            <Link {...link} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .profile-section {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 32px;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .profile-content {
+    flex: 1;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: #4a5568;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 1.125rem;
+    color: #4a5568;
+    margin-bottom: 24px;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    list-style: none;
+  }
+
+  .contact-link:hover {
+    color: var(--hover-color);
+  }
+
+  @media (max-width: 768px) {
+    .profile-section {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    main {
+      padding: 32px 24px;
+    }
+
+    .contact-list {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    main {
+      padding: 24px 20px;
+    }
+
+    .contact-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
