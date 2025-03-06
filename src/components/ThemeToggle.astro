@@ -1,0 +1,145 @@
+<button id="theme-toggle" aria-label="Change theme" class="theme-toggle">
+  <!-- Sun icon  -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="icon-sun"
+  >
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <!-- Moon -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="icon-moon"
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<style>
+  .theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    transition: background-color var(--transition-fast);
+    position: relative;
+  }
+
+  .theme-toggle:hover {
+    background-color: var(--color-bg-secondary);
+  }
+
+  .theme-toggle svg {
+    width: var(--size-sm);
+    height: var(--size-sm);
+  }
+
+  /* By default (light theme) show moon */
+  .icon-sun {
+    display: none;
+  }
+
+  .icon-moon {
+    display: block;
+  }
+
+  /* When dark teme chosen than show sun */
+  html[data-theme="dark"] .icon-sun {
+    display: block;
+  }
+
+  html[data-theme="dark"] .icon-moon {
+    display: none;
+  }
+
+  /* When system theme is dark than show sun instead of moon */
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) .icon-sun {
+      display: block;
+    }
+
+    html:not([data-theme="light"]) .icon-moon {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // function to initialize the theme toggle
+  const initTheme = () => {
+    const themeToggle = document.getElementById("theme-toggle");
+
+    // function to set the theme
+    const setTheme = (theme: string) => {
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("skobgeo-theme", "dark");
+      } else if (theme === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("skobgeo-theme", "light");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+        localStorage.removeItem("skobgeo-theme");
+      }
+    };
+
+    // Checking local storage for saved theme
+    const savedTheme = localStorage.getItem("skobgeo-theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+
+    // Event listener for theme toggle
+    themeToggle?.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const systemDarkTheme = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      if (currentTheme === "dark") {
+        setTheme("light");
+      } else if (currentTheme === "light") {
+        setTheme("dark");
+      } else {
+        // If theme not set, then set theme based on system theme
+        setTheme(systemDarkTheme ? "light" : "dark");
+      }
+    });
+  };
+
+  // Initialize theme toggle to avoid flickering
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initTheme);
+  } else {
+    initTheme();
+  }
+</script>

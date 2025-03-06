@@ -27,3 +27,10 @@ import '../styles/global.css';
     height: 100%;
   }
 </style>
+
+<script is:inline>
+  const savedTheme = localStorage.getItem('skobgeo-theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+</script>
