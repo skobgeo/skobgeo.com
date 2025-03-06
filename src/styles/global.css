@@ -1,0 +1,50 @@
+:root {
+  /* palette */
+  --color-primary-100: #e6eefb;
+  --color-primary-200: #d9e4f7;
+  --color-primary-300: #b0cdf0;
+  --color-primary-400: #6fa0e3;
+  --color-primary-500: #0057bf; /* base */
+  --color-primary-600: #004aa3;
+  --color-primary-700: #003d82;
+  --color-primary-800: #002a61;
+  --color-primary-900: #001f45;
+
+  /* text */
+  --color-text-primary: #1a202c; /* Был --text-color */
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+  
+  /* background */
+  --color-bg-primary: #f0f4f8; /* Был --bg-color */
+  --color-bg-secondary: #e2e8f0;
+  --color-bg-card: #ffffff;    /* Был --card-bg */
+  
+  /* typography */
+  --font-family-base: "Inter", system-ui, -apple-system, sans-serif;
+  --line-height-base: 1.6;
+  --font-weight-base: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Border radius */
+  --radius-sm: 2px;
+  --radius-md: 4px; /* base */
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* Тени */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* base */
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-base);
+  font-weight: var(--font-weight-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
