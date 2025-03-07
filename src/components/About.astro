@@ -5,8 +5,8 @@ import Link from "./Link.astro";
 
 const links = [
   {
-    name: "gskobelev@pm.me",
-    url: "mailto:gskobelev@pm.me",
+    name: "skobgeo@pm.me",
+    url: "mailto:skobgeo@pm.me",
   },
   {
     name: "Telegram",
@@ -14,7 +14,7 @@ const links = [
   },
   {
     name: "GitHub",
-    url: "https://github.com/skogeo",
+    url: "https://github.com/skobgeo",
   },
   {
     name: "LinkedIn",
@@ -59,7 +59,7 @@ const links = [
       {
         links.map((link) => (
           <li>
-            <Link {...link} />
+            <Link name={link.name} url={link.url} />
           </li>
         ))
       }
